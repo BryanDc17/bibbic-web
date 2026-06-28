@@ -7,7 +7,7 @@ export default function HowItWorks() {
         </h2>
         
         <p className="text-gray-400 text-center mt-5 max-w-2xl mx-auto">
-          Whether you're a creator, promoter or fan, BIBBIC makes collaboration simple.
+          Whether you&apos;re a creator, promoter or fan, BIBBIC makes collaboration simple.
         </p>
         
         <div className="grid md:grid-cols-3 gap-8 mt-20">
