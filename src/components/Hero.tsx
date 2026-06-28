@@ -1,42 +1,54 @@
 "use client";
 
 import { useState } from "react";
+
 export default function Hero() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
   const joinWaitlist = async () => {
-  if (!email) {
-    setMessage("Please enter your email.");
-    return;
-  }
-
-  setLoading(true);
-  setMessage("");
-
-  try {
-    const response = await fetch("/api/waitlist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      setMessage("🎉 You're on the waitlist!");
-      setEmail("");
-    } else {
-      setMessage(data.error || "Something went wrong.");
+    if (!email) {
+      setMessage("📩 Please enter your email.");
+      return;
     }
-  } catch {
-    setMessage("Network error. Please try again.");
-  } finally {
-    setLoading(false);
-  }
-};
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      setMessage("❌ Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(
+          "🎉 Welcome to BIBBIC! You're officially on the waitlist. We'll notify you when we launch."
+        );
+        setEmail("");
+      } else {
+        setMessage(data.error || "Something went wrong.");
+      }
+    } catch {
+      setMessage("🌐 Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="relative flex flex-col items-center justify-center text-center px-6 pt-44 pb-32 overflow-hidden">
 
@@ -47,7 +59,7 @@ export default function Hero() {
 
       {/* Badge */}
       <div className="mb-6 inline-flex items-center rounded-full border border-purple-500/40 bg-purple-500/10 px-5 py-2 text-sm text-purple-300">
-        🚀 The Home of Creatoor Growth
+        🚀 The Home of Creator Growth
       </div>
 
       {/* Logo */}
