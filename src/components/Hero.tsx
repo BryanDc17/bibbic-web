@@ -50,7 +50,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center text-center px-6 pt-44 pb-32 overflow-hidden">
+    <section id="waitlist"
+    className="relative flex flex-col items-center justify-center text-center px-6 pt-44 pb-32 overflow-hidden">
 
       {/* Background Glow */}
       <div className="absolute w-[500px] h-[500px] bg-purple-600/20 blur-[140px] rounded-full"></div>

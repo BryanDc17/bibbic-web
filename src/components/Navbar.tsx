@@ -8,7 +8,7 @@ export default function Navbar() {
           BIBBIC
         </h1>
 
-        {/* Navigation */}
+{/* Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-sm text-gray-300">
           <a href="#features" className="transition hover:text-white">
             Features
@@ -23,12 +23,13 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* CTA */}
-        <button className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/40">
-          Join Waitlist
-        </button>
-
-      </div>
+          {/* CTA */}
+          <a href="#waitlist"
+          className="rounded-full bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/40"
+          >
+              Join Waitlist 🚀
+          </a>
+        </div>
     </header>
   );
 }
